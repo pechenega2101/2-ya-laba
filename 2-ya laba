@@ -1,21 +1,17 @@
 #include <iostream>
-#include <string>
+#include<string>
 #include <ctime>
 
 using namespace std;
 
 class detal {
+    friend void print(detal);
 public:
     friend class control;
-    detal(string& _name) {
-        mass = 0;
-        name = _name;
-        id = rand() % 100;
-    };
-    ~detal() {
-        cout << "\n>Destructed<\n";
-    };
-    void print() {
+    detal(string&);
+    detal() {};
+    ~detal();
+    void print(detal _detal) {
         cout << "\nName: " << name << "\nID: " << id << "\nmass: " << mass << endl;
     }
 private:
@@ -30,27 +26,35 @@ public:
         a.mass = _mass;
     }
 };
-
+detal::detal(string& _name) {
+    mass = 0;
+    name = _name;
+    id = rand() % 100;
+};
+detal::~detal() {
+    cout << "\n>Destructed<\n";
+};
 int main()
 {
     srand(time_t(NULL));
     string _name;
     float _mass;
     const int chis = 3;
-    detal* arr[chis];
+    detal ();
+    detal arr[chis];
+    control yaoy;
     int num;
-    for (num = 1; num <= chis; num++)
+    for (num = 0; num < chis; num++)
     {
         cout << "\ninput name:";
         cin >> _name;
-        detal chel(_name);
-        chel.print();
+        arr[num]= detal(_name);
+        arr[num].print(arr[num]);
         cout << "\ninput mass:";
         do {
             rewind(stdin);
         } while (!scanf_s("%f", &_mass) || _mass < 0);
-        control yaoy;
-        yaoy.set_mass(chel, _mass);
-        chel.print();
+        yaoy.set_mass(arr[num], _mass);
+        arr[num].print(arr[num]);
     }
 }
