@@ -1,1 +1,1 @@
-# 2-ya-laba
+# 2-ya-laba variant 2
