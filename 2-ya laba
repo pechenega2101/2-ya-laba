@@ -19,9 +19,7 @@ public:
         id = b;
     };
     ~detal();
-    void print(detal _detal) {
-        cout << "\nName: " << name << "\nID: " << id << "\nmass: " << mass << endl;
-    }
+    
 private:
     int id;
     string name;
@@ -34,6 +32,10 @@ public:
         a.mass = _mass;
     }
 };
+void print(detal);
+void print(detal _detal) {
+        cout << "\nName: " << _detal.name << "\nID: " << _detal.id << "\nmass: " << _detal.mass << endl;
+    }
 detal::~detal() {
     cout << "\n>Destructed<\n";
 };
@@ -60,6 +62,6 @@ int main()
             rewind(stdin);
         } while (!scanf_s("%f", &_mass) || _mass < 0);
         yaoy.set_mass(arr[num], _mass);
-        arr[num].print(arr[num]);
+        print(arr[num]);
     }
 }
