@@ -8,8 +8,16 @@ class detal {
     friend void print(detal);
 public:
     friend class control;
-    detal(string&);
-    detal() {};
+
+    detal() {
+        name = ' ';
+        id = 0;
+        mass = 0;
+    };
+    detal(string a, int b) {
+        name = a;
+        id = b;
+    };
     ~detal();
     void print(detal _detal) {
         cout << "\nName: " << name << "\nID: " << id << "\nmass: " << mass << endl;
@@ -26,11 +34,6 @@ public:
         a.mass = _mass;
     }
 };
-detal::detal(string& _name) {
-    mass = 0;
-    name = _name;
-    id = rand() % 100;
-};
 detal::~detal() {
     cout << "\n>Destructed<\n";
 };
@@ -39,8 +42,9 @@ int main()
     srand(time_t(NULL));
     string _name;
     float _mass;
+    int _id;
     const int chis = 3;
-    detal ();
+    detal van("0", 0);
     detal arr[chis];
     control yaoy;
     int num;
@@ -48,8 +52,9 @@ int main()
     {
         cout << "\ninput name:";
         cin >> _name;
-        arr[num]= detal(_name);
-        arr[num].print(arr[num]);
+        cout << "\ninput id:";
+        cin >> _id;
+        arr[num]=detal(_name, _id);
         cout << "\ninput mass:";
         do {
             rewind(stdin);
